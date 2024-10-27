@@ -1,0 +1,12 @@
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/bin/Debug/net8.0/Presentation.deps.json
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/bin/Debug/net8.0/Presentation.dll
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/bin/Debug/net8.0/Presentation.pdb
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/Presentation.csproj.AssemblyReference.cache
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/Presentation.GeneratedMSBuildEditorConfig.editorconfig
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/Presentation.AssemblyInfoInputs.cache
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/Presentation.AssemblyInfo.cs
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/Presentation.csproj.CoreCompileInputs.cache
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/Presentation.dll
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/refint/Presentation.dll
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/Presentation.pdb
+/Users/bew/Desktop/Project/dotnet/CQRSDemo/src/Presentation/obj/Debug/net8.0/ref/Presentation.dll
