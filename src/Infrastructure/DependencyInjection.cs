@@ -1,9 +1,11 @@
 
 using Application.Interfaces;
+using Application.Interfaces.Caching;
 using Infrastructure.MappingProfiles;
 using Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using Infrastructure.Caching;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,8 +16,11 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        // add scoped for repository DI
+        // add scoped for repositories DI
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        
+        // add scope for services DI
+        services.AddScoped<ICacheService, CacheService>();
         
         // add auto mapper profiles
         services.AddAutoMapper(typeof(CustomerProfile).Assembly);
@@ -27,7 +32,7 @@ public static class DependencyInjection
         // config redis cache
         services.AddStackExchangeRedisCache(options =>
         {
-            options.Configuration = configuration["RedisConnection"];
+            options.Configuration = configuration.GetConnectionString("RedisConnection");
             // options.InstanceName = configuration["RedisInstanceName"];
         });
         

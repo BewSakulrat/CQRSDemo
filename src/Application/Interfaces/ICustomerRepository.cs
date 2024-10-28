@@ -5,9 +5,9 @@ namespace Application.Interfaces;
 
 public interface ICustomerRepository
 {
-    Task<CustomerDto> GetCustomerByIdAsync(Guid customerId);
-    Task<IEnumerable<CustomerDto>> GetCustomersAsync();    
-    Task AddAsync(CreateCustomerDto customerDto);
-    Task UpdateAsync(UpdateCustomerDto customerDto);
+    Task<Customer> GetByIdAsync(Guid customerId);
+    Task<IEnumerable<CustomerDto>> GetAllAsync();    
+    Task<Guid> AddAsync(Customer customer);
+    Task<Customer> UpdateAsync(Customer customer);
     Task DeleteAsync(Guid customerId);
 }

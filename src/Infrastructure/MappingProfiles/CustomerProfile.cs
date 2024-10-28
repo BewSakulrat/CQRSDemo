@@ -1,3 +1,5 @@
+using Application.Commands.Customers.CreateCustomer;
+using Application.Commands.Customers.UpdateCustomer;
 using Application.DTOs.Customer;
 using AutoMapper;
 using Domain.Entities;
@@ -11,5 +13,7 @@ public class CustomerProfile : Profile
         CreateMap<Customer, CustomerDto>().ReverseMap();
         CreateMap<CreateCustomerDto, Customer>().ReverseMap();
         CreateMap<UpdateCustomerDto, Customer>().ReverseMap();
+        CreateMap<CreateCustomerCommand, Customer>().ReverseMap();
+        CreateMap<UpdateCustomerCommand, Customer>().ReverseMap();
     }
 }

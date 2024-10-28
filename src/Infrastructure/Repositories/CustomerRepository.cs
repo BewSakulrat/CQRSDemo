@@ -11,6 +11,7 @@ public class CustomerRepository : ICustomerRepository
 {
     private readonly AppDbContext _context;
     private readonly IMapper _mapper;
+    private ICustomerRepository _customerRepositoryImplementation;
 
     public CustomerRepository(AppDbContext context, IMapper mapper)
     {
@@ -18,29 +19,31 @@ public class CustomerRepository : ICustomerRepository
         _mapper = mapper;
     }
 
-    public async Task<CustomerDto> GetCustomerByIdAsync(Guid customerId)
+    public async Task<Customer> GetByIdAsync(Guid customerId)
     {
-        var customer = _mapper.Map<CustomerDto>(await _context.Customers.FindAsync(customerId));
-        return customer;
+        return await _context.Customers.FindAsync(customerId);
     }
 
-    public async Task<IEnumerable<CustomerDto>> GetCustomersAsync()
+    public async Task<IEnumerable<CustomerDto>> GetAllAsync()
     {
         var customers = await _context.Customers.AsNoTracking().ToListAsync(); 
         return _mapper.Map<IEnumerable<CustomerDto>>(customers); 
     }
 
-    public async Task AddAsync(CreateCustomerDto customerDto)
+    public async Task<Guid> AddAsync(Customer customer)
     {
-        var customer = _mapper.Map<Customer>(customerDto);
+        // var customer = _mapper.Map<Customer>(customerDto);
         await _context.Customers.AddAsync(customer);
+        await _context.SaveChangesAsync();
+        return customer.Id;
     }
 
-    public async Task UpdateAsync(UpdateCustomerDto customerDto)
+    public async Task<Customer> UpdateAsync(Customer customer)
     {
-        var customer = _mapper.Map<Customer>(customerDto);
+        // var customer = _mapper.Map<Customer>(customerDto);
         _context.Customers.Update(customer);
         await _context.SaveChangesAsync();
+        return customer;
     }
 
     public async Task DeleteAsync(Guid customerId)

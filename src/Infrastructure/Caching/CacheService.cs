@@ -1,4 +1,4 @@
-using Infrastructure.Interfaces.Caching;
+using Application.Interfaces.Caching;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 
