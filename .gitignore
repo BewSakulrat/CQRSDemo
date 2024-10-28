@@ -2,12 +2,12 @@
 .vscode/*
 .idea/
 .vscode/
-src/Application/bin
-src/Application/obj
+src/Application/bin/*
+src/Application/obj/*
 CQRSDemo.sln.DotSettings.user
 src/WebApi/bin/Debug/*
 src/Infrastructure/bin/Debug/*
 src/Domain/bin/Debug/*
-src/Domain/obj
-src/Infrastructure/obj
-src/WebApi/obj
+src/Domain/obj/*
+src/Infrastructure/obj/*
+src/WebApi/obj/*
