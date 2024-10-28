@@ -5,7 +5,6 @@ using Infrastructure.MappingProfiles;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Presentation;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,20 +15,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    .AddInfrastructure()
-    .AddApplication()
-    .AddPresentation();
-
+    .AddInfrastructure(builder.Configuration)
+    .AddApplication();
 
 // configure controller
 builder.Services.AddControllers();
 
 // Register AutoMapper and specify the assembly with the profiles from Infrastructure
 // builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-// configure AppDbContext with SQL Server
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
