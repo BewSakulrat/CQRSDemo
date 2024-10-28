@@ -27,12 +27,19 @@ public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerComman
         
         var customerDto = _mapper.Map<CustomerDto>(await _customerRepository.UpdateAsync(customer));
         
-        string cacheKey = $"GetAllCustomers";
+        string cacheKeyForAllCustomer = $"GetAllCustomers";
+        string cacheKeyForCustomerById = $"GetCustomerById:{customer.Id}";
         
-        var cachedCustomer = await _cacheService.GetAsync<IEnumerable<CustomerDto>>(cacheKey);
+        var cachedCustomers = await _cacheService.GetAsync<IEnumerable<CustomerDto>>(cacheKeyForAllCustomer);
+        if (cachedCustomers != null)
+        {
+            await _cacheService.RemoveAsync(cacheKeyForAllCustomer);
+        }
+        
+        var cachedCustomer = await _cacheService.GetAsync<CustomerDto>(cacheKeyForCustomerById);
         if (cachedCustomer != null)
         {
-            await _cacheService.RemoveAsync(cacheKey);
+            await _cacheService.RemoveAsync(cacheKeyForCustomerById);
         }
         
         return customerDto;
